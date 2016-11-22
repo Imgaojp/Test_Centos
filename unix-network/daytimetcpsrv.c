@@ -1,6 +1,6 @@
 #include"unp.h"
-#inlcude<time.h>
-int int main(int argc, char const **argv)
+#include<time.h>
+int main(int argc, char const **argv)
 {
 	/* code */
 	int listenfd,connfd;
@@ -12,7 +12,7 @@ int int main(int argc, char const **argv)
     servaddr.sin_family = AF_INET;
     servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
     servaddr.sin_port = htons(14);
-    Bind(listenfd, (SA *) NULL, NULL);
+    Bind(listenfd, (SA *) &servaddr,sizeof(servaddr));
     Listen(listenfd,LISTENQ);
     for (;   ; ) {
         connfd = Accept(listenfd, (SA *) NULL, NULL);
